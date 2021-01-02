@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace Adsr\Elektron;
 
-use \RuntimeException as RuntimeException;
-
 abstract class Struct implements Field {
     private array $data_map = [];
     private int $length = -1;
@@ -21,7 +19,7 @@ abstract class Struct implements Field {
             $len = $field->getLength();
             $chunk = array_slice($data, $offset, $len);
             if (count($chunk) !== $len) {
-                throw new RuntimeException(sprintf(
+                throw new \RuntimeException(sprintf(
                     "Expected chunk len %d but saw %d",
                     $len,
                     count($chunk)
@@ -38,7 +36,7 @@ abstract class Struct implements Field {
             $len = $field->getLength();
             $chunk = $field->toSysex();
             if (count($chunk) !== $len) {
-                throw new RuntimeException(sprintf(
+                throw new \RuntimeException(sprintf(
                     "Expected chunk len %d but saw %d",
                     $len,
                     count($chunk)
@@ -61,7 +59,7 @@ abstract class Struct implements Field {
 
     public function getField(string $field): Field {
         return $this->data_map[$field]
-            ?? throw new RuntimeException("Field $field does not exist");
+            ?? throw new \RuntimeException("Field $field does not exist");
     }
 
     public function get(string $path): int|string {
@@ -80,7 +78,7 @@ abstract class Struct implements Field {
             $field = $field->getField($nested_field);
         }
         if (!($field instanceof Primitive)) {
-            throw new RuntimeException("Path $path is not a Primitive");
+            throw new \RuntimeException("Path $path is not a Primitive");
         }
         return $field;
     }
@@ -99,4 +97,12 @@ abstract class Struct implements Field {
         return $paths;
     }
 
+    public function __toString(): string {
+        $paths = $this->getPaths();
+        $dump = [];
+        foreach ($paths as $path) {
+            $dump[$path] = $this->get($path);
+        }
+        return print_r($dump, true);
+    }
 }

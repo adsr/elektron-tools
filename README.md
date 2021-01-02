@@ -5,6 +5,7 @@ Analog4. Also playing around with new features in PHP 8.
 
 ### TODO
 
-* Add field constraints (e.g., osc1_sub: 0=OFF, 1=10CT, 2=20CT, 3=2PUL, 4=5TH)
+* Handle signed params
+* Finish adding field constraints (DEP, DST)
 * Add bin script for randomizing kits and patterns
 * Add MachineDrum

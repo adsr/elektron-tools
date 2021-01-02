@@ -22,7 +22,7 @@ class Analog4SoundSettings extends Struct {
             'unknown_4' => new Unknown(2),
             'velmod5_dst' => new Int8_1(),
             'unknown_5' => new Unknown(1),
-            'velmod_bipolar' => new Int8_1(),
+            'velmod_bipolar' => new Int8_1(['OFF' => 0, 'ON' => 1]),
             'pb1_dep' => new Int8_1(),
             'unknown_6' => new Unknown(2),
             'pb1_dst' => new Int8_1(),

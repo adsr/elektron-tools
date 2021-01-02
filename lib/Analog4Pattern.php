@@ -13,19 +13,20 @@ class Analog4Pattern extends Struct {
         return [
             'unknown_0' => new Unknown(4),
             'track1' => new Analog4Track(),
-            'unknown_1' => new Unknown(8),
             'track2' => new Analog4Track(),
-            'unknown_2' => new Unknown(8),
             'track3' => new Analog4Track(),
-            'unknown_3' => new Unknown(8),
             'track4' => new Analog4Track(),
-            'unknown_4' => new Unknown(8),
             'cv' => new Analog4Track(),
-            'unknown_5' => new Unknown(8),
             'fx' => new Analog4Track(),
-            'unknown_6' => new Unknown(8),
             'plocks' => new Arr(fn() => new Analog4Plock(), 128),
-            'unknown_7' => new Unknown(16),
+            'master_len' => new Int16(range(2, 1024) + ['INF' => 1]),
+            'master_chng' => new Int16(range(2, 1024) + ['OFF' => 1]),
+            'unknown_1' => new Unknown(1),
+            'swing' => new Int8_1(range(0, 30)),
+            'unknown_1' => new Unknown(1),
+            'master_scale' => new Int8_1(['1X' => 2, '1/8X' => 6, '1/4X' => 5, '1/2X' => 4, '3/4X' => 3, '3/2X' => 1, '2X' => 0]),
+            'global_quantize' => new Int8_1(),
+            'unknown_2' => new Unknown(8),
         ];
     }
 
@@ -48,7 +49,7 @@ class Analog4Pattern extends Struct {
 
         // Ensure checksums match
         if ($cksum_calc !== $cksum) {
-            throw new RuntimeException(sprintf(
+            throw new \RuntimeException(sprintf(
                 "Expected checksum %d but saw %d",
                 $cksum_calc,
                 $cksum

@@ -3,10 +3,7 @@ declare(strict_types=1);
 
 namespace Adsr\Elektron;
 
-use \RuntimeException as RuntimeException;
-use \ArrayAccess as ArrayAccess;
-
-class Arr implements Field, ArrayAccess {
+class Arr implements Field, \ArrayAccess {
     private array $arr = [];
     private int $size = 0;
     private int $length = -1;
@@ -24,7 +21,7 @@ class Arr implements Field, ArrayAccess {
             $len = $field->getLength();
             $chunk = array_slice($data, $offset, $len);
             if (count($chunk) !== $len) {
-                throw new RuntimeException(sprintf(
+                throw new \RuntimeException(sprintf(
                     "Expected chunk len %d but saw %d",
                     $len,
                     count($chunk),
@@ -41,7 +38,7 @@ class Arr implements Field, ArrayAccess {
             $len = $field->getLength();
             $chunk = $field->toSysex();
             if (count($chunk) !== $len) {
-                throw new RuntimeException(sprintf(
+                throw new \RuntimeException(sprintf(
                     "Expected chunk len %d but saw %d",
                     $len,
                     count($chunk)
@@ -88,14 +85,14 @@ class Arr implements Field, ArrayAccess {
     public function offsetGet(mixed $offset): mixed {
         $i = (int)$offset;
         return $this->arr[$i]
-            ?? throw new RuntimeException(sprintf("Array index %d is out of bounds", $i));
+            ?? throw new \RuntimeException(sprintf("Array index %d is out of bounds", $i));
     }
 
     public function offsetSet(mixed $offset, mixed $value): void {
-        throw new RuntimeException("Array is read-only");
+        throw new \RuntimeException("Array is read-only");
     }
 
     public function offsetUnset(mixed $offset): void {
-        throw new RuntimeException("Array is read-only");
+        throw new \RuntimeException("Array is read-only");
     }
 }

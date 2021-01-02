@@ -11,7 +11,7 @@ trait Util {
     public function ensureLen(array $data, int $len): void {
         $data_len = count($data);
         if ($data_len !== $len) {
-            throw new RuntimeException(sprintf(
+            throw new \RuntimeException(sprintf(
                 'Expected len %d but saw %d',
                 $len,
                 $data_len

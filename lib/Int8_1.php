@@ -12,4 +12,3 @@ class Int8_1 extends Int8_2 {
         return 1;
     }
 }
-

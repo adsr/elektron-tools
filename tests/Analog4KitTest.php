@@ -17,8 +17,8 @@ class Analog4KitTest extends \PHPUnit\Framework\TestCase {
         $kit->set('sound1.amp_vol', 64);
         $this->assertEquals(64, $kit->get('sound1.amp_vol'));
 
-        $kit->set('sound1.osc1_tun', 255);
-        $this->assertEquals(255, $kit->get('sound1.osc1_tun'));
+        $kit->set('sound1.osc1_tun', 127);
+        $this->assertEquals(127, $kit->get('sound1.osc1_tun'));
 
         $kit->set('sound1.lfo.lfo1_dep1', 32768);
         $this->assertEquals(32768, $kit->get('sound1.lfo.lfo1_dep1'));
