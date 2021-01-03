@@ -26,6 +26,11 @@ class Int16 implements Field, Primitive {
     }
 
     public function set(int|string $value): void {
-        $this->num = max(min((int)$value, 0xffff), 0x0000);
+        $this->num = min(max((int)$value, 0x0000), 0x7fff);
+    }
+
+    public function randomize(): void {
+        $rand_val = random_int(0x0000, 0x7fff);
+        $this->set($rand_val);
     }
 }

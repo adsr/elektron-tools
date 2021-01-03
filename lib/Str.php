@@ -34,5 +34,9 @@ class Str implements Field, Primitive {
     public function set(int|string $value): void {
         $this->str = substr((string)$value, 0, $this->len);
     }
+
+    public function randomize(): void {
+        throw new \RuntimeException('Not implemented');
+    }
 }
 

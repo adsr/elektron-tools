@@ -5,7 +5,7 @@ Analog4. Also playing around with new features in PHP 8.
 
 ### TODO
 
-* Handle signed params
-* Finish adding field constraints (DEP, DST)
-* Add bin script for randomizing kits and patterns
+* Replace 1-off bin scripts with elektronctl tool
+* Replace ShittyMidi with abstracted MIDI class and backend
+* Add field constraints for DST params
 * Add MachineDrum

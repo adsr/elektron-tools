@@ -6,12 +6,14 @@ namespace Adsr\Elektron;
 class Int8_2 implements Field, Primitive {
     protected int $num = 0;
     protected array $constraint;
+    protected bool $signed = false;
 
     public function __construct(?array $constraint = null) {
         if ($constraint === null) {
             $constraint = range(0, 127);
         }
         $this->constraint = $constraint;
+        $this->signed = !empty(array_filter($constraint, fn ($v) => $v < 0));
     }
 
     public function fromSysex(array $data): void {
@@ -40,6 +42,14 @@ class Int8_2 implements Field, Primitive {
         if ($constrained_value === null) {
             $constrained_value = reset($this->constraint);
         }
-        $this->num = $constrained_value;
+        if ($this->num < 0) {
+            $this->num = 256 - $this->num;
+        }
+        $this->num = min(max($constrained_value, 0), 255);
+    }
+
+    public function randomize(): void {
+        $rand_val = $this->constraint[array_rand($this->constraint)];
+        $this->set($rand_val);
     }
 }

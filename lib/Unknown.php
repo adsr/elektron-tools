@@ -9,6 +9,7 @@ class Unknown implements Field, Primitive {
 
     public function __construct(int $len) {
         $this->len = $len;
+        $this->data = array_fill(0, $len, 0);
     }
 
     public function fromSysex(array $data): void {
@@ -28,5 +29,10 @@ class Unknown implements Field, Primitive {
     }
 
     public function set(int|string $value): void {
+        throw new \RuntimeException('Not implemented');
+    }
+
+    public function randomize(): void {
+        throw new \RuntimeException('Not implemented');
     }
 }
