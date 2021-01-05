@@ -7,5 +7,4 @@ Analog4. Also playing around with new features in PHP 8.
 
 * Replace 1-off bin scripts with elektronctl tool
 * Replace ShittyMidi with abstracted MIDI class and backend
-* Add field constraints for DST params
 * Add MachineDrum
