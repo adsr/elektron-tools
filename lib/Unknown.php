@@ -25,7 +25,7 @@ class Unknown implements Field, Primitive {
     }
 
     public function get(): int|string {
-        return implode(',', $this->data);
+        return implode(' ', array_map(fn($v) => sprintf('%02x', $v), $this->data));
     }
 
     public function set(int|string $value): void {

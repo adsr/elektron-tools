@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Adsr\Elektron;
 
-abstract class Struct implements Field {
+abstract class Struct implements Container {
     private array $data_map = [];
     private int $length = -1;
 

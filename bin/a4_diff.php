@@ -10,10 +10,10 @@ $kind = $argv[1] ?? 'kit';
 
 $get_sysex_fn = function() use ($kind): array {
     if ($kind === 'kit') {
-        return ShittyMidi::readKit();
+        return ShittyMidi::readA4Kit();
         $obj = new Analog4Kit();
     }
-    return ShittyMidi::readPattern();
+    return ShittyMidi::readA4Pattern();
 };
 
 $toggle = 1;

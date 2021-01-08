@@ -12,7 +12,14 @@ class Str implements Field, Primitive {
     }
 
     public function fromSysex(array $data): void {
-        $this->str = trim(implode('', array_map('chr', $data)));
+        $str = '';
+        foreach ($data as $c) {
+            if ($c === 0) {
+                break;
+            }
+            $str .= chr($c);
+        }
+        $this->str = $str;
     }
 
     public function toSysex(): array {

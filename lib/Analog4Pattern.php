@@ -18,7 +18,7 @@ class Analog4Pattern extends Struct {
             'track4' => new Analog4Track(),
             'cv' => new Analog4Track(),
             'fx' => new Analog4Track(),
-            'plocks' => new Arr(fn() => new Analog4Plock(), 128),
+            'plocks' => new Arr(128, fn() => new Analog4Plock()),
             'master_len' => new Int16(range(2, 1024) + ['INF' => 1]),
             'master_chng' => new Int16(range(2, 1024) + ['OFF' => 1]),
             'unknown_1' => new Unknown(1),

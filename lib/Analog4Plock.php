@@ -8,7 +8,7 @@ class Analog4Plock extends Struct {
         return [
             'param' => new Int8_1(),
             'track' => new Int8_1(range(0, 6)),
-            'vals' => new Arr(fn() => new Int8_1(), 64),
+            'vals' => new Arr(64, fn() => new Int8_1()),
         ];
     }
 }

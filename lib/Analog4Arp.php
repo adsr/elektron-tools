@@ -15,12 +15,12 @@ class Analog4Arp extends Struct {
             'n02' => new Int8_1(),
             'n03' => new Int8_1(),
             'n04' => new Int8_1(),
-            'n02_locks' => new Arr(fn() => new Int8_1(), 64),
-            'n03_locks' => new Arr(fn() => new Int8_1(), 64),
-            'n04_locks' => new Arr(fn() => new Int8_1(), 64),
+            'n02_locks' => new Arr(64, fn() => new Int8_1()),
+            'n03_locks' => new Arr(64, fn() => new Int8_1()),
+            'n04_locks' => new Arr(64, fn() => new Int8_1()),
             'pattern_len' => new Int8_1(range(0, 15)),
             'pattern' => new Int16(),
-            'pattern_offsets' => new Arr(fn() => new Int8_1(), 10),
+            'pattern_offsets' => new Arr(10, fn() => new Int8_1()),
         ];
     }
 }

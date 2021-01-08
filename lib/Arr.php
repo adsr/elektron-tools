@@ -3,16 +3,16 @@ declare(strict_types=1);
 
 namespace Adsr\Elektron;
 
-class Arr implements Field, \ArrayAccess {
+class Arr implements Container, \ArrayAccess {
     private array $arr = [];
     private int $size = 0;
     private int $length = -1;
 
-    public function __construct(callable $new_class_fn, int $num_elements) {
+    public function __construct(int $num_elements, callable $new_class_fn) {
+        $this->num_elements = $num_elements;
         for ($i = 0; $i < $num_elements; $i++) {
             $this->arr[] = $new_class_fn();
         }
-        $this->num_elements = $num_elements;
     }
 
     public function fromSysex(array $data): void {
